@@ -12,7 +12,7 @@ config :line_bot_starter, LineBotStarterWeb.Endpoint,
   render_errors: [view: LineBotStarterWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: LineBotStarter.PubSub, adapter: Phoenix.PubSub.PG2]
 
-config :line_bot_starter, LineBotStarterWeb.LineAuthentication,
+config :line_bot_starter, Line.Client,
   channel_secret: System.get_env("LINE_CHANNEL_SECRET"),
   channel_access_token: System.get_env("LINE_CHANNEL_ACCESS_TOKEN")
 
