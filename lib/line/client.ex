@@ -3,7 +3,7 @@ defmodule Line.Client do
   def reply(messages, replyToken) do
     line_client = Application.get_env(:line_bot_starter, Line.Client)
 
-    HTTPoison.post!(
+    HTTPoison.post(
       @reply_endpoint,
       Poison.encode!(%{
         "replyToken" => replyToken,
