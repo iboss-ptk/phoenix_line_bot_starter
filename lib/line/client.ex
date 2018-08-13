@@ -1,8 +1,8 @@
 defmodule Line.Client do
   @reply_endpoint "https://api.line.me/v2/bot/message/reply"
-  def reply(messages, replyToken) do
-    line_client = Application.get_env(:line_bot_starter, Line.Client)
+  @line_conf Application.get_env(:line_bot_starter, Line.Client)
 
+  def reply(messages, replyToken) do
     HTTPoison.post(
       @reply_endpoint,
       Poison.encode!(%{
@@ -11,7 +11,7 @@ defmodule Line.Client do
       }),
       [
         {"Content-Type", "application/json"},
-        {"Authorization", "Bearer #{line_client[:channel_access_token]}"}
+        {"Authorization", "Bearer #{@line_conf[:channel_access_token]}"}
       ]
     )
   end
